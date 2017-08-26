@@ -1,0 +1,95 @@
+%%% PREAMBLE 
+%%
+% Document class
+\documentclass[a4paper,11pt]{scrbook}
+
+
+% Font
+\usepackage{fontspec}
+
+
+% Typography
+\usepackage{polyglossia}
+\setdefaultlanguage{english}
+
+\usepackage{csquotes}
+
+
+% Bibliography
+\usepackage[style=numeric-comp,backend=biber]{biblatex}
+\addbibresource{Bib/Books.bib}
+
+
+% Hyper links
+\usepackage{hyperref}
+
+
+% References
+\usepackage{cleveref}
+
+
+% Doc info
+\author{Alexandre \textsc{Quenon}}
+\date{2017-08-24}% Created on
+\title{C++ guideline: conventions}
+
+
+
+\begin{document}
+\frontmatter
+\maketitle
+
+\tableofcontents
+
+
+\mainmatter
+%% CHAPTER %%
+\chapter{Naming stuff}
+
+
+\section{Generic guideline}
+
+
+	\begin{enumerate}
+		\item Use explicit names that express ideas, concepts.\\
+			Example: phone\_book VS number\_vector
+		\item Prefer underscore to camel case for readability.\\
+			Example: number\_of\_element VS numberOfElement\\
+			Comment: this rule is followed by the Standard Library.
+		\item In general, avoid capital letters.\\
+			Comment: this rule is followed by the Standard Library.
+	\end{enumerate}
+
+
+\section{Specific guidelines}
+
+
+	\subsection{Variables}
+	
+		\begin{enumerate}
+			\item Do not embed the type in the name because it lowers the abstraction level.\\
+			Examples: do not use something like \verb|char* pc_buffer| or \verb|int i_number|.\\
+			Remark: embedding the type in the variable name is a nightmare of maintenance and consistency: suppose you decide to change your \verb|int| to a \verb|double|, how many names will you have to change to maintain the consistency?
+		\end{enumerate}
+
+
+	\subsection{User-defined types (classes)}
+	
+		\begin{enumerate}
+			\item Capitalize names for user-defined types.\\
+				Examples: Widget, My\_Super\_Class.
+		\end{enumerate}
+	
+	
+	\subsection{Macros}
+	
+		\begin{enumerate}
+			\item Use all-capital names for macros \cite{Stroustrup_2013__Cpp_Prog_Lang}.
+		\end{enumerate}
+
+
+
+\printbibliography[heading=bibintoc]
+
+
+\end{document}
