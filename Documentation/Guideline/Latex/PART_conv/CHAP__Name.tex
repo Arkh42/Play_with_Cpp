@@ -63,6 +63,8 @@ Of course, we may apply them for other things but, in general, we will mainly fa
 	
 		For your information, \cref{RUL::Name:user_defined} is not followed by the Standard Library (e.g., \verb|std::vector| or \verb|std::string|).
 		However, to my opinion, it is easier for the programmer to identify variables, return types\dots that are of built-in type or part of the STL from their own classes or enumerations.
+		Of course, it is an exception to \cref{RUL::Name:avoid_capitals}.
+		Eventually, following this rule or not is your choice.
 	
 	
 	\subsection{Macros}
@@ -75,5 +77,6 @@ Of course, we may apply them for other things but, in general, we will mainly fa
 		\textcolor{red}{TBC}
 		Macros are more C-like programming.
 		As a consequence, their use should be seen as something unusual.
-		Therefore, \cref{RUL::Name:macro} is not named optional.
+		Therefore, to draw readers' attention on any used macro, \cref{RUL::Name:macro} is not named optional.
+		This is an intentional exception to \cref{RUL::Name:avoid_capitals} because using macros should be annoying.
 
