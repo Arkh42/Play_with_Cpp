@@ -1,0 +1,79 @@
+\chapter{Naming stuff}
+
+The purpose of the current chapter is to provide generic as well as specific rules in order to have an easy-to-read code.
+This if probably one of the most important part, especially when working in teams, because it helps you to track bugs and to understand each other's code.
+
+
+
+\section{Generic guideline}
+
+Let us start with some generic rules that can be applied in the whole code, whatever we are working on a class or a function.
+
+
+\begin{guiderule}[Use explicit names that express ideas, concepts.]
+	Compare phone\_book with number\_vector \cite{Stroustrup_2013__Cpp_Prog_Lang,Martin_2009__Coder_propr}.
+	
+	C++ is object-oriented programming.
+	Ideas and concepts have a higher level of abstraction.
+\end{guiderule}
+
+
+\begin{guiderule}[Prefer underscore to camel case for readability.]
+	\label{RUL::Name:underscore}
+	Compare number\_of\_element with numberOfElement \cite{Stroustrup_2013__Cpp_Prog_Lang}.
+\end{guiderule}
+
+
+\begin{guiderule}[In general, avoid capital letters.]
+	\label{RUL::Name:avoid_capitals}
+	It is simply easier and faster to write non-capital letters.
+\end{guiderule}
+
+
+\Cref{RUL::Name:underscore,RUL::Name:avoid_capitals} are followed by the Standard Library.
+
+
+
+\section{Specific guidelines}
+
+Let us now review some rules that are intended for specific part of the codes, such as variables or functions.
+Of course, we may apply them for other things but, in general, we will mainly face the situation for the specified subject.
+
+
+	\subsection{Variables}
+	
+		\begin{guiderule}[Do not embed the type in the name.]
+			It lowers the abstraction level.
+			Moreover, embedding the type in the variable name is a nightmare of maintenance and consistency.
+			Suppose you decide to change your \verb|int| to a \verb|double|, how many names will you have to change to maintain the consistency? \cite{Martin_2009__Coder_propr,Stroustrup_2013__Cpp_Prog_Lang}
+			
+			Examples: do not use something like \verb|char* pc_buffer| or \verb|int i_number|.
+		\end{guiderule}
+	
+		The previous rules could also be applied to functions (about their return type, for instance).
+		However, this is typically done for variables by programmers who are used to weak-typed languages.
+
+
+	\subsection{User-defined types (\texttt{class}es and \texttt{enum}s)}
+	
+		\begin{optionalrule}[Capitalize names for user-defined types.]
+			\label{RUL::Name:user_defined}
+			Examples: Widget, My\_Super\_Class.
+		\end{optionalrule}
+	
+		For your information, \cref{RUL::Name:user_defined} is not followed by the Standard Library (e.g., \verb|std::vector| or \verb|std::string|).
+		However, to my opinion, it is easier for the programmer to identify variables, return types\dots that are of built-in type or part of the STL from their own classes or enumerations.
+	
+	
+	\subsection{Macros}
+	
+		\begin{guiderule}[Use all-capital names for macros.]
+			\label{RUL::Name:macro}
+			Examples: CRC\_CODE, BUFSIZE.
+		\end{guiderule}
+	
+		\textcolor{red}{TBC}
+		Macros are more C-like programming.
+		As a consequence, their use should be seen as something unusual.
+		Therefore, \cref{RUL::Name:macro} is not named optional.
+
