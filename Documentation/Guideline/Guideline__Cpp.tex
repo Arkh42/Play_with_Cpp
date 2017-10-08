@@ -1,0 +1,80 @@
+%%% PREAMBLE 
+%%
+% Document class
+\documentclass[a4paper,11pt]{scrbook}
+
+
+% Font
+\usepackage{fontspec}
+
+
+% Typography
+\usepackage{polyglossia}
+\setdefaultlanguage{english}
+
+\usepackage{csquotes}
+
+
+% Frames
+\usepackage{xcolor}
+
+\usepackage[framemethod=TikZ,footnoteinside=true]{mdframed}
+
+\mdfdefinestyle{rulestyle}{%
+	outerlinewidth=0.5pt,%
+%	outerlinecolor=blue!80!black,%
+	roundcorner=8pt,%
+	backgroundcolor=yellow!25,%
+	innertopmargin=\topskip,%
+}
+\mdtheorem[style=rulestyle]{guiderule}{Rule}
+\mdtheorem[style=rulestyle]{optionalrule}[guiderule]{Rule (optional)}
+
+\AfterPackage{cleveref}{%
+	\crefname{guiderule}{rule}{rules}
+	\crefname{optionalrule}{optional rule}{optional rules}
+}
+
+
+% Bibliography
+\usepackage[style=numeric-comp,backend=biber]{biblatex}
+\addbibresource{Bib/Books.bib}
+
+
+% Hyper links
+\usepackage{hyperref}
+
+
+% References
+\usepackage{cleveref}
+
+
+% Doc info
+\author{Alexandre \textsc{Quenon}}
+\date{2017-08-24}% Created on
+\title{C++ Guideline}
+
+
+
+\begin{document}
+\frontmatter
+\maketitle
+
+\tableofcontents
+
+
+\mainmatter
+
+%% PART 1: Conventions
+\part{Pure conventions}
+\include{Latex/PART_conv/CHAP__Intro}
+\include{Latex/PART_conv/CHAP__Name}
+
+
+%% PART 2: C++ Programming Techniques
+\part{C++ Programming Techniques}
+
+
+\backmatter
+\printbibliography[heading=bibintoc]
+\end{document}
