@@ -1,0 +1,58 @@
+%%% PREAMBLE 
+%%
+% Document class
+\documentclass[a4paper,11pt]{scrbook}
+
+
+% Font
+\usepackage{fontspec}
+
+
+% Typography
+\usepackage{polyglossia}
+\setdefaultlanguage{english}
+
+\usepackage{csquotes}
+
+
+% Frames
+\usepackage{xcolor}
+
+
+% Bibliography
+%\usepackage[style=numeric-comp,backend=biber]{biblatex}
+%\addbibresource{Bib/Books.bib}
+
+
+% Hyper links
+\usepackage{hyperref}
+
+
+% References
+\usepackage{cleveref}
+
+
+% Doc info
+\author{Alexandre \textsc{Quenon}}
+\date{2017-10-16}% Created on
+\title{C++ project: File Handler}
+
+
+
+\begin{document}
+\frontmatter
+\maketitle
+
+\tableofcontents
+
+
+\mainmatter
+
+\include{Latex/CHAP__Functional_spec}
+\include{Latex/CHAP__Design_spec}
+
+
+
+\backmatter
+%\printbibliography[heading=bibintoc]
+\end{document}
