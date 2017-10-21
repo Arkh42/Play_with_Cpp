@@ -23,6 +23,13 @@
 \usepackage{hyperref}
 
 
+% S I units
+\usepackage[binary-units=true]{siunitx}
+
+\sisetup{detect-all=true}
+\sisetup{per-mode=symbol}
+
+
 % References
 \usepackage{cleveref}
 
@@ -62,18 +69,41 @@
 
 	\subsection{Interests of specifications}
 	
-		\begin{frame}{Specifications}{Aims}
-			Something in my frame.
+		\begin{frame}{Specifications}{The necessity of the specs}
+			Specifications, or specs, allow to:
+			\begin{itemize}
+				\item clarify the context of a project,
+				\item define the goals and the expectations,
+				\item limit the scope of the desired features.
+			\end{itemize}
+		
+			\begin{exampleblock}{Example: specs for a car engine}
+				\begin{itemize}
+					\item target: an engine
+					\item context: for a car (not a plane nor a rocket)
+					\item goals: minimize volume, minimize consumption\dots
+					\item limit the scope: maximum power (e.g., so that speed $< \SI{150}{\km\per\hour}$)
+				\end{itemize}
+				
+			\end{exampleblock}
 		\end{frame}
 		
 		\begin{frame}{Specifications}{Types of specifications}
-			Something in my frame.
+			There are two types of specifications for this project:
+			\begin{enumerate}
+				\item functional specifications,
+				\item design specifications.
+			\end{enumerate}
+		
+			\emph{Functional specs} define the aims as well as the different functions, or blocks, of the whole system.
+			
+			\emph{Design specs} describe the implementation of the functions, i.e., the structure, architecture, design techniques as well as specific features.
 		\end{frame}
 	
 	
 	\subsection{Specifications of \enquote{File Handler}}
 	
-		\begin{frame}{Functional specifications}
+		\begin{frame}{Functional specifications of \enquote{File Handler}}{What is included}
 			Functional specifications must define:
 			\begin{itemize}
 				\item the aims of the project
@@ -81,7 +111,30 @@
 			\end{itemize}
 		\end{frame}
 	
-		\begin{frame}{Design specifications}
+		\begin{frame}{Functional specifications of \enquote{File Handler}}{Aims of the project}
+			Handling files refers to:
+			\begin{itemize}
+				\item automatically opening and closing files (RAII),
+				\item opening either for read or write operations according to the request of the user,
+				\item allow access to only one thread at a time.
+			\end{itemize}
+			
+			\begin{alertblock}{Thread safe operation}
+				File stream use $=$ critical resource access in multi-thread application $\Longrightarrow$ control access strategy is required!
+			\end{alertblock}
+		\end{frame}
+	
+		\begin{frame}{Functional specifications of \enquote{File Handler}}{End-User Interface}
+			Two types of interface:
+			\begin{enumerate}
+				\item read operations,
+				\item write operations.
+			\end{enumerate}
+		
+			Conversely, some specific behaviours must be hidden to the end-user, i.e., must be excluded from the interface!
+		\end{frame}
+	
+		\begin{frame}{Design specifications of \enquote{File Handler}}
 			xxx
 		\end{frame}
 	

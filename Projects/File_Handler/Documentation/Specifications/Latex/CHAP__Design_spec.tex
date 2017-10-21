@@ -1,3 +1,134 @@
 \chapter{Design specifications}
 
-	Toto
+Toto
+
+
+\section{The \enquote{File\_Reader} class}
+
+	xxx
+	
+	
+	\subsection{Behaviour at construction}
+		
+		\begin{enumerate}
+			\item try to open the file stream in the specified mode,
+			\item verify if the file is correctly opened.
+		\end{enumerate}
+	
+	
+	\subsection{Behaviour at destruction}
+		
+		\begin{enumerate}
+			\item close the file stream.
+		\end{enumerate}
+	
+	
+	\subsection{UML class diagram}
+	
+		xxx
+	
+	
+\section{The \enquote{File\_Writer} class}
+
+	xxx
+	
+	
+	\subsection{Behaviour at construction}
+	
+		xxx
+	
+		\begin{enumerate}
+			\item try to open the file stream in the specified mode,
+			\item verify if the file is correctly opened,
+			\item write a timestamp.
+		\end{enumerate}
+	
+	
+	\subsection{Behaviour at destruction}
+	
+		xxx
+	
+		\begin{enumerate}
+			\item write a timestamp,
+			\item close the file stream.
+		\end{enumerate}
+	
+	
+	\subsection{UML class diagram}
+	
+		Methods are organised as follows:
+		\begin{itemize}
+			\item high-level interface
+				\begin{itemize}
+					\item special text formatting
+				\end{itemize}
+			\item low-level engine
+				\begin{itemize}
+					\item resource acquisition and release
+					\item basic writing (resource request with mutex)
+				\end{itemize}
+		\end{itemize}
+		
+		
+		\begin{figure}[htb]
+			\centering
+			\begin{tikzpicture}
+				\begin{class}[text  width=8cm]{FileWriter}{0,0}
+					% Attributes
+					\attribute{- file\_extension : std::string = ``.txt"}
+					\attribute{- comment\_symbol : std::string = ``\#"}
+					
+					% High-level interface
+					
+					% Low-level methods
+					\operation{- open\_file( std::string path\_to\_file ) : void}
+					\operation{- close\_file( std::string path\_to\_file ) : void}
+					
+					\operation{- write\_timestamp( std::string stamp\_info = ``" ) : void}
+					\operation{- write\_comment( std::string comment ) : void}
+					\operation{- write( std::string data ) : void}
+				\end{class}
+				
+				\begin{class}[text  width=7cm]{ CppFileWriter }{-4,-5}
+					\inherit{FileWriter}
+					
+					% Attributes
+					\attribute{- file\_extension : std::string = ``.cpp"}
+					\attribute{- comment\_symbol : std::string = ``//"}
+					
+					% High-level interface
+					
+					% Low-level methods
+					
+				\end{class}
+				
+				\begin{class}[text  width=7cm]{ LogFileWriter }{4,-5}
+					\inherit{FileWriter}
+					
+					% Attributes
+					\attribute{- file\_extension : std::string = ``.log"}
+					
+					% High-level interface
+					\operation{+ write\_log\_entry( std::string log\_message )}
+					
+					% Low-level methods
+					
+				\end{class}
+				
+				\begin{class}[text  width=7cm]{ MarkDownFileWriter }{0,-8}
+					\inherit{FileWriter}
+					
+					% Attributes
+					\attribute{- file\_extension : std::string = ``.md"}
+					
+					% High-level interface
+					\operation{+ write\_header( int level, std::string text )}
+					\operation{+ write\_item( std::string text )}
+					
+					% Low-level methods
+					
+				\end{class}
+			\end{tikzpicture}
+			\caption{UML class diagram of the \enquote{File\_Writer} class\label{DSPEC::fig:File_Writer__UML}}
+		\end{figure}
+		

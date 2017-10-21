@@ -8,18 +8,41 @@ Functional specifications define the aims as well as the different functions, or
  	As the \enquote{File\_Handler} name suggests, the aim of the current project consists in \emph{handling files}.
  	Handling refers to:
  	\begin{itemize}
- 		\item automatically opening and closing files,
+ 		\item automatically opening and closing files (RAII\footnote{RAII, which stands for \enquote{Resource Acquisition Is Initialization}, is an object-oriented programming technique which consists in acquiring the resource at object construction and releasing it at destruction, making the resource tied to the object lifetime} class),
  		\item opening either for read or write operations according to the request of the user,
  		\item allow access to only one thread at a time.
  	\end{itemize}
+ 	\textcolor{red}{TBC!} However, there is \textbf{no interpretation} of the file content: the \enquote{File\_Handler} reads and writes but does not understand!
  
- 	The last goal is extremely important if the project is used in a multi-thread application.
- 	The file streams will indeed be accessed as critical resources.
- 	For instance, if two threads accesses the file stream at the same time:
- 	
+ 	In the case of a multi-thread application, the use of any file stream is equivalent to an access to a \emph{critical resource}.
+ 	Indeed, if different threads use simultaneously the same stream, a critical race will occur and the data will be mixed in an unpredictable way.
+ 	In order to prevent such an event from occurring, a control of the resource access must be implemented.
  	
  
  
 \section{End-User Interface}
 
+	The \enquote{File\_Handler} shall provide two types of interface:
+	\begin{enumerate}
+		\item read operations,
+		\item write operations.
+	\end{enumerate}
+	Conversely, specific features must absolutely be hidden to the end-user.
+	Hence, they must not be part of the interface.
+	
+	Expected interface for the read operations:
+	\begin{itemize}
+		\item 
+	\end{itemize}
+
+	Expected interface for the write operations:
+	\begin{itemize}
+		\item 
+	\end{itemize}
+
+	Hidden features that are not part of the end-user interface:
+	\begin{itemize}
+		\item resource management (acquisition, request of use and release);
+		\item strategy for thread safe multiple access.
+	\end{itemize}
 	
