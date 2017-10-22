@@ -3,20 +3,54 @@
 Functional specifications define the aims as well as the different functions, or blocks, of the whole system.
 
 
+\section{Context}
+
+	One of the most important processes in code design flow is testing.
+	It is so important that some programmers embed testing in their design, using a technique named \enquote{Test-Driven Development}.
+	
+	Testing requires providing information to the designer.
+	Information can be given by outputting the results directly in the terminal.
+	However, the test must be run and there is no possibility to track the results from a version to another.
+	Hence, writing the test results in a file is almost mandatory.
+	Besides the context of C++ program testing, most of coding projects require files writing and reading.
+	In order to do so, a \enquote{file handler} tool would be useful.
+	
+
+
 \section{Aims}
 
- 	As the \enquote{File\_Handler} name suggests, the aim of the current project consists in \emph{handling files}.
- 	Handling refers to:
- 	\begin{itemize}
- 		\item automatically opening and closing files (RAII\footnote{RAII, which stands for \enquote{Resource Acquisition Is Initialization}, is an object-oriented programming technique which consists in acquiring the resource at object construction and releasing it at destruction, making the resource tied to the object lifetime} class),
- 		\item opening either for read or write operations according to the request of the user,
- 		\item allow access to only one thread at a time.
- 	\end{itemize}
- 	\textcolor{red}{TBC!} However, there is \textbf{no interpretation} of the file content: the \enquote{File\_Handler} reads and writes but does not understand!
- 
- 	In the case of a multi-thread application, the use of any file stream is equivalent to an access to a \emph{critical resource}.
- 	Indeed, if different threads use simultaneously the same stream, a critical race will occur and the data will be mixed in an unpredictable way.
- 	In order to prevent such an event from occurring, a control of the resource access must be implemented.
+	The current project targets two generic aims:
+	\begin{enumerate}
+		\item achieve C++ programming features for files handling,
+		\item learn specific C++ programming techniques.
+	\end{enumerate}
+
+
+	\subsection{C++ features to achieve}
+
+	 	As the \enquote{File\_Handler} name suggests, the aim of the current project consists in \emph{handling files}.
+	 	Handling refers to:
+	 	\begin{itemize}
+	 		\item automatically opening and closing files (RAII class),
+	 		\item opening either for read or write operations according to the request of the user,
+	 		\item allow access to only one thread at a time.
+	 	\end{itemize}
+ 	
+	 	However, \textbf{the handler is not an interpreter} of the file content: the \enquote{File\_Handler} reads and writes but does not understand!
+	 	As a consequence, it cannot be used to extract information.
+	 	
+	 	
+	 \subsection{C++ programming techniques to learn}
+	 
+	 	Handling files corresponds to \emph{resource management}.
+	 	During the execution of a program, every necessary resource must be  acquired before being used, and released properly to prevent it from being corrupted.
+	 	One possible implementation of resource management is the RAII technique.
+	 	\textbf{RAII}, which stands for \enquote{Resource Acquisition Is Initialization}, is an object-oriented programming technique which consists in acquiring the resource at object construction and releasing it at destruction, making the resource tied to the object lifetime
+	 	
+	 	In addition, in the case of a multi-thread application, a resource can be turned into a \emph{critical resource}, which implies that either no simultaneous access is allowed or only a maximum number of threads can access the resource simultaneously.
+	 	File writing does not allow simultaneous access.
+	 	Otherwise, a critical race will occur and the data will be mixed in an unpredictable way.
+	 	As a consequence, a control of the resource access must be implemented.
  	
  
  
